@@ -1,0 +1,175 @@
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fresh Tomatoes!</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            $('#trailer').foundation('reveal', 'open');
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+                'id': 'trailer-video',
+                'type': 'text-html',
+                'src': sourceUrl,
+                'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+            $('.movie-tile').hide().first().show("fast", function showNext() {
+                $(this).next("div").show("fast", showNext);
+            });
+        });
+    </script>
+</head>
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div id="trailer" class="reveal-modal" data-reveal aria-labelledby="trailer" aria-hidden="true" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="fixed contain-to-grid">
+        <nav class="top-bar fixed" data-topbar role="navigation">
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="#">Fresh Tomatoes Movie Trailers</a></h1>
+                </li>
+                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
+
+            <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="right">
+                    <li class="active"><a href="#">Movies</a></li>
+                    <li><a href="#">TV Series</a></li>
+                </ul>
+            </section>
+        </nav>
+    </div>
+    <div class="row">
+      
+<div class="medium-6 large-4 xlarge-3 columns movie-tile text-center" data-trailer-youtube-id="D89OHw0VsYM" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTI3NTQyMzU5M15BMl5BanBnXkFtZTcwMTM2MjgyMQ@@._V1_SX300.jpg" width="220" height="342">
+    <h2>Oldboy</h2>
+</div>
+
+<div class="medium-6 large-4 xlarge-3 columns movie-tile text-center" data-trailer-youtube-id="ByXuk9QqQkk" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjYxMDcyMzIzNl5BMl5BanBnXkFtZTYwNDg2MDU3._V1_SX300.jpg" width="220" height="342">
+    <h2>Spirited Away</h2>
+</div>
+
+<div class="medium-6 large-4 xlarge-3 columns movie-tile text-center" data-trailer-youtube-id="0RwZG7N-DvI" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTcwNDY0ODQ2N15BMl5BanBnXkFtZTcwODAyMzMzMQ@@._V1_SX300.jpg" width="220" height="342">
+    <h2>The Great New Wonderful</h2>
+</div>
+
+<div class="medium-6 large-4 xlarge-3 columns movie-tile text-center" data-trailer-youtube-id="7wd5KEaOtm4" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTkwNTczNTMyOF5BMl5BanBnXkFtZTcwNzUxOTUyMw@@._V1_SX300.jpg" width="220" height="342">
+    <h2>Scott Pilgrim vs. the World</h2>
+</div>
+
+<div class="medium-6 large-4 xlarge-3 columns movie-tile text-center" data-trailer-youtube-id="eMWu6i7l5ec" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTczNjQxODE0N15BMl5BanBnXkFtZTcwMzIxMjc3MQ@@._V1_SX300.jpg" width="220" height="342">
+    <h2>Burn After Reading</h2>
+</div>
+
+<div class="medium-6 large-4 xlarge-3 columns movie-tile text-center" data-trailer-youtube-id="I6xIF92OUos" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTEwNjExOTc2MTJeQTJeQWpwZ15BbWU3MDYzODQ3NDE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Once</h2>
+</div>
+
+<div class="medium-6 large-4 xlarge-3 columns movie-tile text-center" data-trailer-youtube-id="4HP2fm9zNAE" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjI1MTM5NTY2Nl5BMl5BanBnXkFtZTgwODE4OTk4MTE@._V1_SX300.jpg" width="220" height="342">
+    <h2>Wish I Was Here</h2>
+</div>
+
+<div class="medium-6 large-4 xlarge-3 columns movie-tile text-center" data-trailer-youtube-id="MbGNcoB2Y4I" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMjEwOTk4NjU2MF5BMl5BanBnXkFtZTYwMDA3NzI3._V1_SX300.jpg" width="220" height="342">
+    <h2>The Hitchhiker's Guide to the Galaxy</h2>
+</div>
+
+<div class="medium-6 large-4 xlarge-3 columns movie-tile text-center" data-trailer-youtube-id="x04M-C0pF-U" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTIzODA2NTUyM15BMl5BanBnXkFtZTYwODQ2Mjk4._V1_SX300.jpg" width="220" height="342">
+    <h2>The Boondock Saints</h2>
+</div>
+
+<div class="medium-6 large-4 xlarge-3 columns movie-tile text-center" data-trailer-youtube-id="w8JNjmK5lfk" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTI0NTY1MzY4NV5BMl5BanBnXkFtZTcwNTczODAzMQ@@._V1_SX300.jpg" width="220" height="342">
+    <h2>Serenity</h2>
+</div>
+
+<div class="medium-6 large-4 xlarge-3 columns movie-tile text-center" data-trailer-youtube-id="rkOy1C8eX6o" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTY3MTI5NjQ4Nl5BMl5BanBnXkFtZTcwOTU1OTU0OQ@@._V1_SX300.jpg" width="220" height="342">
+    <h2>Pacific Rim</h2>
+</div>
+
+<div class="medium-6 large-4 xlarge-3 columns movie-tile text-center" data-trailer-youtube-id="E7XGNPXdlGQ" data-toggle="modal" data-target="#trailer">
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTU3ODg2NjQ5NF5BMl5BanBnXkFtZTcwMDEwODgzMQ@@._V1_SX300.jpg" width="220" height="342">
+    <h2>Pan's Labyrinth</h2>
+</div>
+
+    </div>
+  </body>
+</html>

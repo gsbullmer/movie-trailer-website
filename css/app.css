@@ -1,12 +1,12 @@
 body {
-    padding-top: 80;
+    padding-top: 80px;
 }
-#trailer .modal-dialog {
+#trailer .reveal-modal {
     margin-top: 200px;
     width: 640px;
     height: 480px;
 }
-.hanging-close {
+.close-reveal-modal {
     position: absolute;
     top: -12px;
     right: -12px;
@@ -24,11 +24,14 @@ body {
     background-color: #EEE;
     cursor: pointer;
 }
-.scale-media {
+.tile .label {
+    font-size: 1rem;
+}
+.flex-video {
     padding-bottom: 56.25%;
     position: relative;
 }
-.scale-media iframe {
+.flex-video iframe {
     border: none;
     height: 100%;
     position: absolute;

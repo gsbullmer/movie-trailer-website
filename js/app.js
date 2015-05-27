@@ -1,21 +1,54 @@
 // Pause the video when the modal is closed
-$(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+$(document).on('click', '.close-reveal-modal, .reveal-modal-bg', function (event) {
     // Remove the src so the player itself gets removed, as this is the only
     // reliable way to ensure the video stops playing in IE
     $("#trailer-video-container").empty();
 });
+
 // Start playing the video whenever the trailer modal is opened
-$(document).on('click', '.tile', function (event) {
-    $('#trailer').foundation('reveal', 'open');
-    var trailerYouTubeId = $(this).attr('data-trailer-youtube-id'),
-        sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+$(document).on('click', '.tile.movie', function (event) {
+    var movieTitle = $(this).attr('data-movie-title'),
+        movieTrailerId = $(this).attr('data-movie-youtube-id'),
+        sourceUrl = 'http://www.youtube.com/embed/' + movieTrailerId + '?autoplay=1&html5=1',
+        movieRating = '<span class="label success radius">' + $(this).attr('data-movie-rating') + '</span>',
+        movieCast = $(this).attr('data-movie-cast'),
+        movieRuntime = $(this).attr('data-movie-runtime');
+    
+    $('#movieTitle').empty().append(movieTitle + ' ' + movieRating);
+    $('#movieCast').empty().append('Staring: ' + movieCast);
+    $('#movieRuntime').empty().append('Runtime: ' + movieRuntime);
     $("#trailer-video-container").empty().append($("<iframe></iframe>", {
         'id': 'trailer-video',
         'type': 'text-html',
         'src': sourceUrl,
         'frameborder': 0
     }));
+    
+    $('#trailer').foundation('reveal', 'open');
 });
+
+// Start playing the video whenever the trailer modal is opened
+$(document).on('click', '.tile.tv-show', function (event) {
+    var rating = $(this).attr('data-rating'),
+        tvShowTitle = $(this).attr('data-trailer-title'),
+        tvShowRating = '<span class="label success radius">' + rating + '</span>',
+        tvShowCast = $(this).attr('data-cast'),
+        tvShowPlot = $(this).attr('data-plot'),
+        tvShowPoster = $(this).attr('data-poster-img');
+    
+    $('#tvShowPoster').empty().append('<img src="' + tvShowPoster + '"/>')
+    $('#tvShowTitle').empty().append(tvShowTitle + ' ' + tvShowRating);
+    $('#tvShowCast').empty().append('Starring: ' + tvShowCast);
+    $('#tvShowPlot').empty().append(tvShowPlot);
+    
+    $('#tvShowInfo').foundation('reveal', 'open');
+});
+
+function showTiles(container) {
+    $(container + ' .tile').hide().first().show("fast", function showNext() {
+        $(this).next("div").show("fast", showNext);
+    });
+}
 
 function showMovies() {
     $('#movies').addClass('active');
@@ -35,12 +68,6 @@ function showTvshows() {
     $('#movie-tiles').addClass('hide');
     
     showTiles('#tv-tiles');
-}
-
-function showTiles(container) {
-    $(container + ' .tile').hide().first().show("fast", function showNext() {
-        $(this).next("div").show("fast", showNext);
-    });
 }
 
 // Animate in the movies when the page loads

@@ -16,12 +16,11 @@
 
     <body>
         <!-- Trailer Video Modal -->
-        <div id="trailer" class="reveal-modal" data-reveal aria-labelledby="trailer" aria-hidden="false" role="dialog">
-            <div class="modal-dialog">
-                <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-                <div class="scale-media" id="trailer-video-container">
-                </div>
+        <div id="trailer" class="reveal-modal" data-reveal aria-labelledby="trailerTitle" aria-hidden="true" role="dialog">
+            <h2 id="trailerTitle"></h2>
+            <div class="flex-video" id="trailer-video-container">
             </div>
+            <a class="close-reveal-modal" aria-label="Close">&#215;</a>
         </div>
 
         <!-- Main Page Content -->
@@ -45,72 +44,70 @@
             </nav>
         </div>
         
-        <div id="movie-tiles" class="row">
+        <div id="movie-tiles" class="row hide">
 
-            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="D89OHw0VsYM" data-toggle="modal" data-target="#trailer">
+            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="D89OHw0VsYM" data-trailer-title="Oldboy">
                 <img src="http://ia.media-imdb.com/images/M/MV5BMTI3NTQyMzU5M15BMl5BanBnXkFtZTcwMTM2MjgyMQ@@._V1_SX300.jpg" width="220" height="342">
                 <h2>Oldboy</h2>
             </div>
 
-            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="ByXuk9QqQkk" data-toggle="modal" data-target="#trailer">
+            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="ByXuk9QqQkk">
                 <img src="http://ia.media-imdb.com/images/M/MV5BMjYxMDcyMzIzNl5BMl5BanBnXkFtZTYwNDg2MDU3._V1_SX300.jpg" width="220" height="342">
                 <h2>Spirited Away</h2>
             </div>
 
-            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="0RwZG7N-DvI" data-toggle="modal" data-target="#trailer">
+            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="0RwZG7N-DvI">
                 <img src="http://ia.media-imdb.com/images/M/MV5BMTcwNDY0ODQ2N15BMl5BanBnXkFtZTcwODAyMzMzMQ@@._V1_SX300.jpg" width="220" height="342">
                 <h2>The Great New Wonderful</h2>
-            </div>
-            
-            <div class="clearfix"></div>
+            </div>            
 
-            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="7wd5KEaOtm4" data-toggle="modal" data-target="#trailer">
+            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="7wd5KEaOtm4">
                 <img src="http://ia.media-imdb.com/images/M/MV5BMTkwNTczNTMyOF5BMl5BanBnXkFtZTcwNzUxOTUyMw@@._V1_SX300.jpg" width="220" height="342">
                 <h2>Scott Pilgrim vs. the World</h2>
             </div>
 
-            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="eMWu6i7l5ec" data-toggle="modal" data-target="#trailer">
+            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="eMWu6i7l5ec">
                 <img src="http://ia.media-imdb.com/images/M/MV5BMTczNjQxODE0N15BMl5BanBnXkFtZTcwMzIxMjc3MQ@@._V1_SX300.jpg" width="220" height="342">
                 <h2>Burn After Reading</h2>
             </div>
 
-            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="I6xIF92OUos" data-toggle="modal" data-target="#trailer">
+            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="I6xIF92OUos">
                 <img src="http://ia.media-imdb.com/images/M/MV5BMTEwNjExOTc2MTJeQTJeQWpwZ15BbWU3MDYzODQ3NDE@._V1_SX300.jpg" width="220" height="342">
                 <h2>Once</h2>
             </div>
 
         </div>
         
-        <div id="tv-tiles" class="row clearfix hide">
+        <div id="tv-tiles" class="row hide">
 
-            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="4HP2fm9zNAE" data-toggle="modal" data-target="#trailer">
+            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="4HP2fm9zNAE">
                 <img src="http://ia.media-imdb.com/images/M/MV5BMjI1MTM5NTY2Nl5BMl5BanBnXkFtZTgwODE4OTk4MTE@._V1_SX300.jpg" width="220" height="342">
                 <h2>Wish I Was Here</h2>
             </div>
 
-            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="MbGNcoB2Y4I" data-toggle="modal" data-target="#trailer">
+            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="MbGNcoB2Y4I">
                 <img src="http://ia.media-imdb.com/images/M/MV5BMjEwOTk4NjU2MF5BMl5BanBnXkFtZTYwMDA3NzI3._V1_SX300.jpg" width="220" height="342">
                 <h2>The Hitchhiker's Guide to the Galaxy</h2>
             </div>
 
-            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="x04M-C0pF-U" data-toggle="modal" data-target="#trailer">
+            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="x04M-C0pF-U">
                 <img src="http://ia.media-imdb.com/images/M/MV5BMTIzODA2NTUyM15BMl5BanBnXkFtZTYwODQ2Mjk4._V1_SX300.jpg" width="220" height="342">
                 <h2>The Boondock Saints</h2>
             </div>
             
             <div class="clearfix"></div>
 
-            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="w8JNjmK5lfk" data-toggle="modal" data-target="#trailer">
+            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="w8JNjmK5lfk">
                 <img src="http://ia.media-imdb.com/images/M/MV5BMTI0NTY1MzY4NV5BMl5BanBnXkFtZTcwNTczODAzMQ@@._V1_SX300.jpg" width="220" height="342">
                 <h2>Serenity</h2>
             </div>
 
-            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="rkOy1C8eX6o" data-toggle="modal" data-target="#trailer">
+            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="rkOy1C8eX6o">
                 <img src="http://ia.media-imdb.com/images/M/MV5BMTY3MTI5NjQ4Nl5BMl5BanBnXkFtZTcwOTU1OTU0OQ@@._V1_SX300.jpg" width="220" height="342">
                 <h2>Pacific Rim</h2>
             </div>
 
-            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="E7XGNPXdlGQ" data-toggle="modal" data-target="#trailer">
+            <div class="medium-4 columns end tile text-center" data-trailer-youtube-id="E7XGNPXdlGQ">
                 <img src="http://ia.media-imdb.com/images/M/MV5BMTU3ODg2NjQ5NF5BMl5BanBnXkFtZTcwMDEwODgzMQ@@._V1_SX300.jpg" width="220" height="342">
                 <h2>Pan's Labyrinth</h2>
             </div>

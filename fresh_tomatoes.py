@@ -187,7 +187,7 @@ def create_tv_tiles_content(tvshows):
 
 def open_page(movies, tvshows):
     # Create or overwrite the output file
-    output_file = open('fresh_tomatoes.html', 'w')
+    output_file = open('index.html', 'w')
 
     # Replace the placeholder for the movie tiles with the actual dynamically generated content
     rendered_content = main_page_content.format(

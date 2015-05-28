@@ -20,7 +20,7 @@ movies = [oldboy, spirited_away, great_new_wonderful, scott_pilgrim, burn_after_
 
 # Using OMdb API to gather tv show information from IMDb using IMDb id
 # http://www.omdbapi.com/
-firefly = TvShow("tt0303461")
+firefly = TvShow(1437)
 it_crowd = TvShow("tt0487831")
 castle = TvShow("tt1219024")
 at_midnight = TvShow("tt3279494")

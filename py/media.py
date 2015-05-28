@@ -1,6 +1,4 @@
-import webbrowser
-import json
-import urllib2
+import os, json, urllib2
 
 class Video():
     """ This class provides a way to store basic video information """

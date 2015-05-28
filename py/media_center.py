@@ -1,6 +1,4 @@
-import webbrowser
-import os
-import re
+import webbrowser, os, re
 
 # Styles for the page
 main_page_head = '''
@@ -9,7 +7,7 @@ main_page_head = '''
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Fresh Tomatoes!</title>
+        <title>Interactive Media Center</title>
         
         <!-- Zurb Foundation 5 framework -->
         <link rel="stylesheet" href="css/normalize.css">
@@ -56,7 +54,7 @@ main_page_content = '''
             <nav class="top-bar fixed" data-topbar role="navigation">
                 <ul class="title-area">
                     <li class="name">
-                        <h1><a href="#">Fresh Tomatoes Movie Trailers</a></h1>
+                        <h1><a href="#">Interactive Media Center</a></h1>
                     </li>
                     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
                     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -185,7 +183,7 @@ def create_tv_tiles_content(tvshows):
     '''
     return content
 
-def open_page(movies, tvshows):
+def create_page(movies, tvshows):
     # Create or overwrite the output file
     output_file = open('index.html', 'w')
 

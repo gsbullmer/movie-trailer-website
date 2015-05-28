@@ -1,5 +1,5 @@
-import fresh_tomatoes
-from media import Movie, TvShow
+from py import media_center
+from py.media import Movie, TvShow
 
 # Using OMdb API to gather movie information from IMDb using IMDb id
 # http://www.omdbapi.com/
@@ -37,4 +37,4 @@ game_of_thrones = TvShow("tt0944947")
 
 tvshows = [firefly, it_crowd, castle, at_midnight, agents_of_sheild, stargate_sg1, eureka, yu_yu_hakusho, ncis_no, grimm, mythbusters, dr_who, californication, game_of_thrones]
 
-fresh_tomatoes.open_page(movies, tvshows)
+media_center.create_page(movies, tvshows)

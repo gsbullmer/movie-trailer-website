@@ -1,7 +1,17 @@
-import webbrowser, os, re
+"""Generates Interactive Media Center static webpage.
+
+From video_db.py, call create_page() with two arguments:
+    - Array containing Movie objects
+    - Array containing TvShow objects
+"""
+
+import os
+import re
+import webbrowser
+
 
 # Styles for the page
-main_page_head = '''
+MAIN_PAGE_HEAD = '''
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -21,7 +31,7 @@ main_page_head = '''
 '''
 
 # The main page layout and title bar
-main_page_content = '''
+MAIN_PAGE_CONTENT = '''
     <body>
         <!-- TV Show Info Modal -->
         <div id="tvShowInfo" class="reveal-modal" data-reveal aria-labelledby="showTitle" aria-hidden="true" role="dialog">
@@ -89,7 +99,7 @@ main_page_content = '''
 '''
 
 # A single movie entry html template
-movie_tile_content = '''
+MOVIE_TILE_CONTENT = '''
             <div class="medium-4 columns end tile movie text-center" data-movie-youtube-id="{movie_youtube_id}" data-movie-title="{movie_title}" data-movie-cast="{movie_cast}" data-movie-runtime="{movie_runtime}" data-movie-rating="{movie_rating}">
                 <img src="{poster_image_url}" width="220" height="342">
                 <h3>{movie_title}</h3>
@@ -99,7 +109,7 @@ movie_tile_content = '''
 '''
 
 # A single tv show entry html template
-tvshow_tile_content = '''
+TVSHOW_TILE_CONTENT = '''
             <div class="medium-4 columns end tile tv-show text-center" data-trailer-title="{tvshow_title}" data-cast="{tvshow_cast}" data-plot="{tvshow_plot}" data-rating="{tvshow_rating}" data-poster-img="{poster_image_url}">
                 <img src="{poster_image_url}" width="220" height="342">
                 <h3>{tvshow_title}</h3>
@@ -109,11 +119,13 @@ tvshow_tile_content = '''
 '''
 
 # Fixes vertical alignment issues with Foundation grid layouts
-clearfix_content = '''
+CLEARFIX_CONTENT = '''
             <div class="clearfix"></div>
 '''
 
 def create_movie_tiles_content(movies):
+    """Generates the html content for each Movie in movies."""
+
     # The HTML content for this section of the page
     # Start the movie-tiles row
     content = '''
@@ -125,26 +137,27 @@ def create_movie_tiles_content(movies):
         # Insert the clearfix between rows
         if counter == columns:
             counter = 1
-            content += clearfix_content
+            content += CLEARFIX_CONTENT
         else:
             counter += 1
-            
+
         # Extract the youtube ID from the url
-        youtube_id_match = re.search(r'(?<=v=)[^&#]+', movie.trailer_youtube_url)
-        youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
+        youtube_id_match = re.search(r'(?<=v=)[^&#]+', movie.get_trailer_youtube_url())
+        youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+',
+                                                         movie.get_trailer_youtube_url())
         movie_youtube_id = youtube_id_match.group(0) if youtube_id_match else None
 
         # Append the tile for the movie with its content filled in
-        content += movie_tile_content.format(
-            movie_title = movie.title,
-            poster_image_url = movie.poster_image_url,
-            movie_runtime = movie.runtime,
-            release_year = movie.year,
-            movie_cast = movie.cast,
-            movie_rating = movie.rating,
-            movie_youtube_id = movie_youtube_id
+        content += MOVIE_TILE_CONTENT.format(
+            movie_title=movie.get_title(),
+            poster_image_url=movie.get_poster_image_url(),
+            movie_runtime=movie.get_runtime(),
+            release_year=movie.get_year(),
+            movie_cast=movie.get_cast(),
+            movie_rating=movie.get_rating(),
+            movie_youtube_id=movie_youtube_id
         )
-    
+
     # Close row
     content += '''
         </div>
@@ -152,6 +165,8 @@ def create_movie_tiles_content(movies):
     return content
 
 def create_tv_tiles_content(tvshows):
+    """Generate the html content for each TvShow in tvshows."""
+
     # The HTML content for this section of the page
     # Start the tv-tiles row
     content = '''
@@ -163,20 +178,20 @@ def create_tv_tiles_content(tvshows):
         # Insert the clearfix between rows
         if counter == columns:
             counter = 1
-            content += clearfix_content
+            content += CLEARFIX_CONTENT
         else:
             counter += 1
 
         # Append the tile for the tv show with its content filled in
-        content += tvshow_tile_content.format(
-            tvshow_title = tvshow.title,
-            poster_image_url = tvshow.poster_image_url,
-            tvshow_plot = tvshow.plot,
-            release_year = tvshow.year,
-            tvshow_cast = tvshow.cast,
-            tvshow_rating = tvshow.rating
+        content += TVSHOW_TILE_CONTENT.format(
+            tvshow_title=tvshow.get_title(),
+            poster_image_url=tvshow.get_poster_image_url(),
+            tvshow_plot=tvshow.get_plot(),
+            release_year=tvshow.get_year(),
+            tvshow_cast=tvshow.get_cast(),
+            tvshow_rating=tvshow.get_rating()
         )
-    
+
     # Close row
     content += '''
         </div>
@@ -184,17 +199,19 @@ def create_tv_tiles_content(tvshows):
     return content
 
 def create_page(movies, tvshows):
+    """Generates webpage with movies and tvshows content."""
+
     # Create or overwrite the output file
     output_file = open('index.html', 'w')
 
     # Replace the placeholder for the movie tiles with the actual dynamically generated content
-    rendered_content = main_page_content.format(
-        movie_tiles = create_movie_tiles_content(movies),
-        tv_tiles = create_tv_tiles_content(tvshows)
+    rendered_content = MAIN_PAGE_CONTENT.format(
+        movie_tiles=create_movie_tiles_content(movies),
+        tv_tiles=create_tv_tiles_content(tvshows)
     )
 
     # Output the file
-    output_file.write(main_page_head + rendered_content)
+    output_file.write(MAIN_PAGE_HEAD + rendered_content)
     output_file.close()
 
     # open the output file in the browser

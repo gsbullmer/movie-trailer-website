@@ -25,7 +25,7 @@ class Video(object):
 
     def get_cast(self):
         """Return Video cast."""
-        return self._title
+        return self._cast
 
     def _set_cast(self, data):
         """Set Video cast."""

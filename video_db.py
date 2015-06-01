@@ -9,29 +9,29 @@ from py.media import Movie, TvShow
 # Using OMdb API to gather movie information from IMDb using IMDb id
 # http://www.omdbapi.com/
 OLDBOY = Movie("tt0364569",
-               "https://www.youtube.com/watch?v=D89OHw0VsYM")
+               "http://www.youtube.com/watch?v=D89OHw0VsYM")
 SPIRITED_AWAY = Movie("tt0245429",
-                      "https://www.youtube.com/watch?v=ByXuk9QqQkk")
+                      "http://www.youtube.com/watch?v=ByXuk9QqQkk")
 GREAT_NEW_WONDERFUL = Movie("tt0402230",
-                            "https://www.youtube.com/watch?v=0RwZG7N-DvI")
+                            "http://www.youtube.com/watch?v=0RwZG7N-DvI")
 SCOTT_PILGRIM = Movie("tt0446029",
-                      "https://www.youtube.com/watch?v=7wd5KEaOtm4")
+                      "http://www.youtube.com/watch?v=7wd5KEaOtm4")
 BURN_AFTER_READING = Movie("tt0887883",
-                           "https://www.youtube.com/watch?v=eMWu6i7l5ec")
+                           "http://www.youtube.com/watch?v=eMWu6i7l5ec")
 ONCE = Movie("tt0907657",
-             "https://www.youtube.com/watch?v=I6xIF92OUos")
+             "http://www.youtube.com/watch?v=I6xIF92OUos")
 WISH_I_WAS_HERE = Movie("tt2870708",
-                        "https://www.youtube.com/watch?v=4HP2fm9zNAE")
+                        "http://www.youtube.com/watch?v=4HP2fm9zNAE")
 HITCHHIKERS_GUIDE = Movie("tt0371724",
-                          "https://www.youtube.com/watch?v=MbGNcoB2Y4I")
+                          "http://www.youtube.com/watch?v=MbGNcoB2Y4I")
 BOONDOCK_SAINTS = Movie("tt0144117",
-                        "https://www.youtube.com/watch?v=x04M-C0pF-U")
+                        "http://www.youtube.com/watch?v=x04M-C0pF-U")
 SERENITY = Movie("tt0379786",
-                 "https://www.youtube.com/watch?v=w8JNjmK5lfk")
+                 "http://www.youtube.com/watch?v=w8JNjmK5lfk")
 PACIFIC_RIM = Movie("tt1663662",
-                    "https://www.youtube.com/watch?v=rkOy1C8eX6o")
+                    "http://www.youtube.com/watch?v=rkOy1C8eX6o")
 PANS_LABYRINTH = Movie("tt0457430",
-                       "https://www.youtube.com/watch?v=E7XGNPXdlGQ")
+                       "http://www.youtube.com/watch?v=RTHgdpuzmTw")
 
 MOVIES = [OLDBOY, SPIRITED_AWAY, GREAT_NEW_WONDERFUL, SCOTT_PILGRIM,
           BURN_AFTER_READING, ONCE, WISH_I_WAS_HERE, HITCHHIKERS_GUIDE,

@@ -33,7 +33,7 @@ MAIN_PAGE_HEAD = '''<!doctype html>
 MAIN_PAGE_CONTENT = '''
     <body>
         <!-- TV Show Info Modal -->
-        <div id="tvShowInfo" class="reveal-modal" data-reveal aria-labelledby="showTitle" aria-hidden="true" role="dialog">
+        <div id="tvShowInfo" class="reveal-modal medium" data-reveal aria-labelledby="showTitle" aria-hidden="true" role="dialog">
             <h2 id="tvShowTitle"></h2>
             <div class="row">
                 <div id="tvShowPoster" class="medium-4 columns">
@@ -47,7 +47,7 @@ MAIN_PAGE_CONTENT = '''
         </div>
         
         <!-- Trailer Video Modal -->
-        <div id="trailer" class="reveal-modal" data-reveal aria-labelledby="trailerTitle" aria-hidden="true" role="dialog">
+        <div id="trailer" class="reveal-modal medium" data-reveal aria-labelledby="trailerTitle" aria-hidden="true" role="dialog">
             <h2 id="movieTitle"></h2>
             <div class="flex-video" id="trailer-video-container">
             </div>

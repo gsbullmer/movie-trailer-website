@@ -1,4 +1,4 @@
-// Pause the video when the modal is closed
+// Remove the video when the modal is closed
 $(document).on('click', '.close-reveal-modal, .reveal-modal-bg', function (event) {
     // Remove the src so the player itself gets removed, as this is the only
     // reliable way to ensure the video stops playing in IE
@@ -27,7 +27,7 @@ $(document).on('click', '.tile.movie', function (event) {
     $('#trailer').foundation('reveal', 'open');
 });
 
-// Start playing the video whenever the trailer modal is opened
+// Show TV Show information whenever the modal is opened
 $(document).on('click', '.tile.tv-show', function (event) {
     var rating = $(this).attr('data-rating'),
         tvShowTitle = $(this).attr('data-trailer-title'),
@@ -46,7 +46,6 @@ $(document).on('click', '.tile.tv-show', function (event) {
 
 function showTiles(container) {
     $(container + ' .tile').hide().first().show("fast", function showNext() {
-        console.log($(window).width());
         if ($(this).next("div").hasClass('clearfix')) {
             // Check to see if screen should have large column layout
             if ($(this).next("div").hasClass('large')) {
@@ -88,8 +87,8 @@ $(document).ready(showMovies);
 $(document).on('click', '#movies a', showMovies);
 $(document).on('click', '#tvshows a', showTvshows);
 
+// Updates clearfix columns on resize
 $(window).resize(function() {
-    console.log($(window).width());
     if ($(window).width() <= 1007) {
         $('.clearfix.medium').show();
     } else {

@@ -1,5 +1,7 @@
-body {
-    padding-top: 80px;
+@media only screen and (min-width: 40.063em) {
+    body {
+        padding-top: 80px;
+    }
 }
 #trailer .reveal-modal {
     margin-top: 200px;

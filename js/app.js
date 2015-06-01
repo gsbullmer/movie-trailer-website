@@ -36,9 +36,9 @@ $(document).on('click', '.tile.tv-show', function (event) {
         tvShowPlot = $(this).attr('data-plot'),
         tvShowPoster = $(this).attr('data-poster-img');
     
-    $('#tvShowPoster').empty().append('<img src="' + tvShowPoster + '"/>')
+    $('#tvShowPoster').empty().append('<img src="' + tvShowPoster + '"/>');
     $('#tvShowTitle').empty().append(tvShowTitle + ' ' + tvShowRating);
-    $('#tvShowCast').empty().append('Starring: ' + tvShowCast);
+    $('#tvShowCast').empty().append('Staring: ' + tvShowCast);
     $('#tvShowPlot').empty().append(tvShowPlot);
     
     $('#tvShowInfo').foundation('reveal', 'open');
@@ -46,7 +46,20 @@ $(document).on('click', '.tile.tv-show', function (event) {
 
 function showTiles(container) {
     $(container + ' .tile').hide().first().show("fast", function showNext() {
-        $(this).next("div").show("fast", showNext);
+        console.log($(window).width());
+        if ($(this).next("div").hasClass('clearfix')) {
+            // Check to see if screen should have large column layout
+            if ($(this).next("div").hasClass('large')) {
+                $(this).next("div").show(0, showNext);
+            // Check to see if screen should have medium column layout
+            } else if ($(this).next("div").hasClass('medium') && $(window).width() <= 1007) {
+                $(this).next("div").show(0, showNext);
+            } else {
+                $(this).next("div").hide(0, showNext);
+            }
+        } else {
+            $(this).next("div").show("fast", showNext);
+        }
     });
 }
 
@@ -74,3 +87,12 @@ function showTvshows() {
 $(document).ready(showMovies);
 $(document).on('click', '#movies a', showMovies);
 $(document).on('click', '#tvshows a', showTvshows);
+
+$(window).resize(function() {
+    console.log($(window).width());
+    if ($(window).width() <= 1007) {
+        $('.clearfix.medium').show();
+    } else {
+        $('.clearfix.medium').hide();
+    }
+});

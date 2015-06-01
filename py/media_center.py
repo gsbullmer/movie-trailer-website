@@ -11,8 +11,7 @@ import webbrowser
 
 
 # Styles for the page
-MAIN_PAGE_HEAD = '''
-<!doctype html>
+MAIN_PAGE_HEAD = '''<!doctype html>
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8" />
@@ -100,8 +99,8 @@ MAIN_PAGE_CONTENT = '''
 
 # A single movie entry html template
 MOVIE_TILE_CONTENT = '''
-            <div class="medium-4 columns end tile movie text-center" data-movie-youtube-id="{movie_youtube_id}" data-movie-title="{movie_title}" data-movie-cast="{movie_cast}" data-movie-runtime="{movie_runtime}" data-movie-rating="{movie_rating}">
-                <img src="{poster_image_url}" width="220" height="342">
+            <div class="medium-6 large-3 columns end tile movie text-center" data-movie-youtube-id="{movie_youtube_id}" data-movie-title="{movie_title}" data-movie-cast="{movie_cast}" data-movie-runtime="{movie_runtime}" data-movie-rating="{movie_rating}">
+                <img src="{poster_image_url}" width="250">
                 <h3>{movie_title}</h3>
                 <h5 class="subheader">{release_year}</h5>
                 <span class="label success radius">{movie_rating}</span>
@@ -110,8 +109,8 @@ MOVIE_TILE_CONTENT = '''
 
 # A single tv show entry html template
 TVSHOW_TILE_CONTENT = '''
-            <div class="medium-4 columns end tile tv-show text-center" data-trailer-title="{tvshow_title}" data-cast="{tvshow_cast}" data-plot="{tvshow_plot}" data-rating="{tvshow_rating}" data-poster-img="{poster_image_url}">
-                <img src="{poster_image_url}" width="220" height="342">
+            <div class="medium-6 large-3 columns end tile tv-show text-center" data-trailer-title="{tvshow_title}" data-cast="{tvshow_cast}" data-plot="{tvshow_plot}" data-rating="{tvshow_rating}" data-poster-img="{poster_image_url}">
+                <img src="{poster_image_url}" width="250">
                 <h3>{tvshow_title}</h3>
                 <h5 class="subheader">{release_year}</h5>
                 <span class="label success radius">{tvshow_rating}</span>
@@ -119,8 +118,12 @@ TVSHOW_TILE_CONTENT = '''
 '''
 
 # Fixes vertical alignment issues with Foundation grid layouts
-CLEARFIX_CONTENT = '''
-            <div class="clearfix"></div>
+CLEARFIX_CONTENT_LARGE = '''
+            <div class="clearfix large"></div>
+'''
+
+CLEARFIX_CONTENT_MEDIUM = '''
+            <div class="clearfix medium"></div>
 '''
 
 def create_movie_tiles_content(movies):
@@ -131,14 +134,16 @@ def create_movie_tiles_content(movies):
     content = '''
         <div id="movie-tiles" class="row hide">
     '''
-    columns = 3 # Total number of columns per row
+    columns = 4 # Total number of columns per row
     counter = 0
     for movie in movies:
         # Insert the clearfix between rows
         if counter == columns:
             counter = 1
-            content += CLEARFIX_CONTENT
+            content += CLEARFIX_CONTENT_LARGE
         else:
+            if counter == columns / 2:
+                content += CLEARFIX_CONTENT_MEDIUM
             counter += 1
 
         # Extract the youtube ID from the url
@@ -172,14 +177,16 @@ def create_tv_tiles_content(tvshows):
     content = '''
         <div id="tv-tiles" class="row hide">
     '''
-    columns = 3 # Total number of columns per row
+    columns = 4 # Total number of columns per row
     counter = 0
     for tvshow in tvshows:
         # Insert the clearfix between rows
         if counter == columns:
             counter = 1
-            content += CLEARFIX_CONTENT
+            content += CLEARFIX_CONTENT_LARGE
         else:
+            if counter == columns / 2:
+                content += CLEARFIX_CONTENT_MEDIUM
             counter += 1
 
         # Append the tile for the tv show with its content filled in
